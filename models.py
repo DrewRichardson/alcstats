@@ -8,7 +8,7 @@ class Schema:
 
     def create_alcstats_table(self):
         query = """
-        CREATE TABLE IF NOT EXISTS "alcstats" (
+        CREATE TABLE IF NOT EXISTS "Alc_stats" (
           id INTEGER PRIMARY KEY,
           Name TEXT,
           ABV REAL,
@@ -39,16 +39,16 @@ class AlcStatsModel:
     def create(self, params):
         print (params)
         query = f'insert into {self.TABLENAME} ' \
-                f'(Name, ABV, Calories, Amount(oz), Efficiency) ' \
+                f'(Name, ABV, Calories, Amount, Efficiency) ' \
                 f'values ("{params.get("Name")}","{params.get("ABV")}",' \
-                f'"{params.get("Amount(oz)")}","{params.get("Efficiency")}")'
+                f'"{params.get("Amount")}","{params.get("Efficiency")}")'
         result = self.conn.execute(query)
         return self.get_by_id(result.lastrowid)
 
 
     def list_items(self, where_clause=""):
-        query = f"SELECT id, Name, ABV, Calories,  " \
-                f"from {self.TABLENAME} WHERE _is_deleted != {1} " + where_clause
+        query = f"SELECT id, Name, ABV, Calories, Amount, Efficiency " \
+                f"from {self.TABLENAME}" + where_clause
         print (query)
         result_set = self.conn.execute(query).fetchall()
         result = [{column: row[i]

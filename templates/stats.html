@@ -1,0 +1,22 @@
+<html>
+<body>
+
+<h1>The button form attribute</h1>
+
+<form action="http://localhost:5000/alcstats" method="post" id="alcform">
+  <label for="Name">Beer name:</label>
+  <input type="text" id="Name" name="Name"><br><br>
+  <label for="ABV">ABV:</label>
+  <input type="number" step="0.1" min="0" id="ABV" name="ABV">
+  <label for="Amount">Amount:</label>
+  <input type="number" min="0" id="Amount" name="Amount">
+  <label for="Calories">Calories:</label>
+  <input type="number" min="0" id="Calories" name="Calories">
+</form>
+
+<p>The button below is outside the form element, but still part of the form.</p>
+
+<button type="submit" form="alcform" value="Submit">Submit</button>
+
+</body>
+</html>

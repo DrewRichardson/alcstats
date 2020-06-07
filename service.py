@@ -1,5 +1,6 @@
 from models import AlcStatsModel
-class ToDoService:
+
+class AlcStatsService:
     def __init__(self):
         self.model = AlcStatsModel()
 
